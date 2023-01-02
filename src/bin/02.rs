@@ -62,13 +62,13 @@ mod tests {
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 2);
-        assert_eq!(part_one(&input), None);
+        assert_eq!(part_one("2x3x4"), Some(58));
+        assert_eq!(part_one("1x1x10"), Some(43));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 2);
-        assert_eq!(part_two(&input), None);
+        assert_eq!(part_two("2x3x4"), Some(34));
+        assert_eq!(part_two("1x1x10"), Some(14));
     }
 }
