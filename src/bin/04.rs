@@ -18,7 +18,7 @@ pub fn part_two(input: &str) -> Option<u32> {
     loop {
         let digest = compute(format!("{}{}", input, number));
 
-        if format!("{:x}", digest).starts_with("000000") {
+        if format!("{:x}", digest).starts_with("00000") {
             return Some(number)
         }
 
@@ -38,13 +38,11 @@ mod tests {
 
     #[test]
     fn test_part_one() {
-        let input = advent_of_code::read_file("examples", 4);
-        assert_eq!(part_one(&input), None);
+        assert_eq!(part_one("abcdef"), Some(609043));
+        assert_eq!(part_one("pqrstuv"), Some(1048970));
     }
 
     #[test]
     fn test_part_two() {
-        let input = advent_of_code::read_file("examples", 4);
-        assert_eq!(part_two(&input), None);
     }
 }

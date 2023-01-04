@@ -1,25 +1,3 @@
-pub fn part_one(input: &str) -> Option<usize> {
-    // We start with a vector that already has the starting position visited.
-    let mut visited: Vec<(i32, i32)> = vec![(0, 0)];
-
-    let mut pos = (0, 0);
-    for direction in input.trim().split("") {
-        pos = match direction {
-            ">" => (pos.0 + 1, pos.1),
-            "<" => (pos.0 - 1, pos.1),
-            "^" => (pos.0, pos.1 - 1),
-            "v" => (pos.0, pos.1 + 1),
-            &_ => pos
-        };
-
-        if !visited.contains(&pos) {
-            visited.push(pos)
-        }
-    }
-
-    Some(visited.len())
-}
-
 pub fn match_pos(dir: &str, pos: (i32, i32)) -> (i32, i32) {
     match dir {
         ">" => (pos.0 + 1, pos.1),
@@ -29,6 +7,23 @@ pub fn match_pos(dir: &str, pos: (i32, i32)) -> (i32, i32) {
         _ => pos
     }
 }
+
+pub fn part_one(input: &str) -> Option<usize> {
+    // We start with a vector that already has the starting position visited.
+    let mut visited: Vec<(i32, i32)> = vec![(0, 0)];
+
+    let mut pos = (0, 0);
+    for direction in input.trim().split("") {
+        pos = match_pos(direction, pos);
+
+        if !visited.contains(&pos) {
+            visited.push(pos)
+        }
+    }
+
+    Some(visited.len())
+}
+
 
 pub fn part_two(input: &str) -> Option<usize> {
     // We start with a vector that already has the starting position visited.
