@@ -1,3 +1,6 @@
+mod char_windows;
+use char_windows::CharWindows;
+
 // Part 1: Function that counts the number of characters by folding it using
 // an accumulator that checks if each element contains a vowel.
 fn count_vowels(word: &str) -> u32 {
@@ -29,9 +32,7 @@ fn contains_no_bad_substrings(word: &str, bad_substrings: Vec<&str>) -> bool {
 // in a string without overlap.
 fn pattern_appears_twice(word: &str) -> bool {
     // Generate an iterator over each two-letter pattern as Strings.
-    let patterns = word.chars()
-        .zip(word.chars().skip(1))
-        .map(|a| format!("{}{}", a.0, a.1));
+    let patterns = word.char_windows(2);
     for pattern in patterns {
         // If the pattern appears at least twice in the word return true.
         if word.matches(&pattern).count() >= 2 {
