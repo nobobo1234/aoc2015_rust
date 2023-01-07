@@ -1,5 +1,4 @@
-mod char_windows;
-use char_windows::CharWindows;
+use advent_of_code::char_windows::CharWindows;
 
 // Part 1: Function that counts the number of characters by folding it using
 // an accumulator that checks if each element contains a vowel.
